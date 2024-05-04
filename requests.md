@@ -1,4 +1,5 @@
 
+
 # Запросы
 
   
@@ -6,6 +7,7 @@
 ## Оглавление
 
 + [login](#login)
++ [booking](#booking)
 
   
   
@@ -57,6 +59,124 @@ Payload
     "password": "12345",
     "email": "johndoe@spbstu.ru",
     "access": "Student"
+}
+~~~
+
+## /booking/
+
+**GET Запрос:** получает JSON с занятыми аудиториями 
+
+  ### Входные данные
+
++ **building**  *(Integer)* - ID корпуса *building_id*
++ **date**  *(Date)* - Дата брони
++ **time**  *(Time)* - Время брони
+
+ ### Возврат ответа
+ Бекэнд возвращает JSON со списком с бронями
+ При **успешном** запросе сервер вернет список с объектами брони из базы данных, сериализованный в JSON формат:
+ ~~~
+{
+	"bookings":  [
+			{
+			"audience":  1033,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  563,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  532,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  554,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  1304,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  1358,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			}
+		]
+}
+~~~
+ 
+
+### Пример запроса:
+#### Запрос:
+~~~
+Method: GET
+Address: http://127.0.0.1:8000/booking/
+Headers
+{  
+    'Accept': 'application/json, text/plain, */*',  
+    'Content-Type': 'application/json',  
+},
+Payload
+{
+"building":  "11",
+"date":  "2024-05-04",
+"time":  "16:00:00"
+}
+~~~
+#### Ответ будет выглядеть как:
+ ~~~
+{
+	"bookings":  [
+			{
+			"audience":  1033,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  563,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  532,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  554,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  1304,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			},
+			{
+			"audience":  1358,
+			"time":  "16:00:00",
+			"date":  "2024-05-04",
+			"ordered_by":  null
+			}
+		]
 }
 ~~~
  
